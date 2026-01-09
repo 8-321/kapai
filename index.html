@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探索验证卡牌系统 - 虚拟抽卡</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 顶部标题栏 -->
+        <header class="header">
+            <h1 class="title">🎴 探索验证卡牌系统</h1>
+            <div class="stats">
+                <span class="draw-count">抽卡次数: <span id="totalDraws">0</span></span>
+                <span class="collection-count">收藏: <span id="collectionCount">0</span></span>
+            </div>
+        </header>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 卡牌展示区 -->
+            <div class="card-display-area" id="cardDisplayArea">
+                <div class="welcome-message" id="welcomeMessage">
+                    <h2>欢迎来到探索验证卡牌系统</h2>
+                    <p id="welcomeDesc">点击抽卡按钮，每次将获得3张卡牌供您选择！</p>
+                </div>
+                
+                <!-- 3张卡牌选择区 -->
+                <div class="cards-selection-area" id="cardsSelectionArea" style="display: none;">
+                    <h3 style="text-align: center; margin-bottom: 20px; font-size: 18px;">请选择您想要的卡牌</h3>
+                    <div class="cards-grid" id="cardsGrid">
+                        <!-- 3张卡牌将在这里动态生成 -->
+                    </div>
+                </div>
+                
+                <!-- 单张卡牌展示区（选择后显示） -->
+                <div class="card-container" id="cardContainer" style="display: none;">
+                    <div class="card" id="currentCard">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-front-pattern"></div>
+                                <div class="card-front-content">
+                                    <div class="card-front-header">
+                                        <span class="card-type-label" id="cardTypeLabel">探索卡</span>
+                                        <span class="card-number" id="cardNumber">#01</span>
+                                    </div>
+                                    <div class="card-front-difficulty" id="cardFrontDifficulty"></div>
+                                    <div class="card-front-divider"></div>
+                                    <div class="card-front-title" id="cardFrontTitle">30小时体验新领域</div>
+                                    <div class="card-front-extra" id="cardFrontExtra"></div>
+                                    <div class="card-front-tags" id="cardFrontTags"></div>
+                                    <div class="card-front-period" id="cardFrontPeriod"></div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-back-content" id="cardBackContent">
+                                    <!-- 内容由JavaScript动态填充 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 抽卡按钮区 -->
+            <div class="action-area">
+                <button class="draw-button" id="drawButton">
+                    <span class="button-text">🎲 抽卡</span>
+                    <span class="button-glow"></span>
+                </button>
+                <div class="action-buttons" id="actionButtons" style="display: none;">
+                    <button class="action-btn favorite-btn" id="favoriteBtn">⭐ 收藏</button>
+                    <button class="action-btn share-btn" id="shareBtn">📤 分享</button>
+                </div>
+            </div>
+
+            <!-- 功能按钮区 -->
+            <div class="feature-buttons">
+                <button class="feature-btn" id="historyBtn">📜 历史记录</button>
+                <button class="feature-btn" id="collectionBtn">📚 我的收藏</button>
+                <button class="feature-btn" id="achievementBtn">🏆 成就</button>
+            </div>
+        </main>
+
+        <!-- 历史记录侧边栏 -->
+        <div class="sidebar" id="historySidebar">
+            <div class="sidebar-header">
+                <h3>抽卡历史</h3>
+                <button class="close-btn" id="closeHistoryBtn">×</button>
+            </div>
+            <div class="sidebar-content" id="historyContent">
+                <p class="empty-message">暂无抽卡记录</p>
+            </div>
+        </div>
+
+        <!-- 收藏侧边栏 -->
+        <div class="sidebar" id="collectionSidebar">
+            <div class="sidebar-header">
+                <h3>我的收藏</h3>
+                <button class="close-btn" id="closeCollectionBtn">×</button>
+            </div>
+            <div class="sidebar-content" id="collectionContent">
+                <p class="empty-message">暂无收藏</p>
+            </div>
+        </div>
+
+        <!-- 成就弹窗 -->
+        <div class="modal" id="achievementModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>🏆 成就系统</h3>
+                    <button class="close-btn" id="closeAchievementBtn">×</button>
+                </div>
+                <div class="modal-body" id="achievementContent">
+                    <!-- 成就列表 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 遮罩层 -->
+        <div class="overlay" id="overlay"></div>
+    </div>
+
+    <script src="cardData.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
